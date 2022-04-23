@@ -1,4 +1,3 @@
-from multiprocessing.connection import answer_challenge
 from pathlib import Path
 import PyPDF2
 import os, sys
