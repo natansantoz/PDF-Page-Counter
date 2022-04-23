@@ -1,3 +1,4 @@
+# PDF Page Counter
 
 # ![Gif--Script](https://github.com/natansantoz/PDF-Page-Counter/blob/main/Images/script.gif) 
  
