@@ -3,7 +3,7 @@
 
 
 ## Requirements
----
+
   - python 3.x
   - pip
   - PyPDF2
@@ -11,7 +11,7 @@
 <br>
 
 ## How to use
----
+
 
 - Install PyPDF2
 
