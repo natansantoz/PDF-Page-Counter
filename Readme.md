@@ -8,10 +8,7 @@
   - pip
   - PyPDF2
 
-<br>
-
 ## How to use
-
 
 - Install PyPDF2
 
