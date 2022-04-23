@@ -1,3 +1,4 @@
+from multiprocessing.connection import answer_challenge
 from pathlib import Path
 import PyPDF2
 import os, sys
@@ -25,14 +26,17 @@ def print_footer(couldnt_analyze, total_pages=0 ):
     print("|" + "=" * 93 +"|")
 
 
-def get_pdf_names():
+def get_pdf_names(analyze_subfolders):
     if getattr(sys, 'frozen', False):
-        exe_path = os.path.dirname(sys.executable)
-        pdf_names = list(Path(exe_path).rglob("*.pdf" ))
-        return pdf_names
+        path = os.path.dirname(sys.executable)
     elif __file__:
         path = os.path.dirname(os.path.abspath(__file__))
+
+    if analyze_subfolders == "y":
         pdf_names = list(Path(path).rglob("*.pdf" ))
+        return pdf_names            
+    elif analyze_subfolders == "n":
+        pdf_names = [f for f in os.listdir(path) if f.endswith('.pdf')]
         return pdf_names
 
 
@@ -78,8 +82,8 @@ def print_books_and_pages(pdf_names):
 
 def show_unable_message(couldnt_analyze):
     if len(couldnt_analyze) > 0:
-        print("| Unable to analyze the "+ str(len(couldnt_analyze)) 
-        + " following pdfs: " + " " * 52 + "|")
+        print("| Unable to analyze the "+ str(len(couldnt_analyze)) +
+         " following pdfs: " + " " * 52 + "|")
         
         print("|" + "-" * 93 + "|")
 
@@ -87,14 +91,32 @@ def show_unable_message(couldnt_analyze):
             print("| " + pdf_name + " " * (92 - len(pdf_name)) + "|")
 
 
+def main(analyze_subfolders):
+    print_header()     
 
-warnings.filterwarnings("ignore")
+    pdf_names = get_pdf_names(analyze_subfolders)
+    total_pages, couldnt_analyze = print_books_and_pages(pdf_names)
 
-print_header()     
+    print_footer(couldnt_analyze, total_pages)
 
-pdf_names = get_pdf_names()
-total_pages, couldnt_analyze = print_books_and_pages(pdf_names)
+    os.system('pause')
 
-print_footer(couldnt_analyze, total_pages)
 
-os.system('pause')
+def menu():
+    warnings.filterwarnings("ignore")
+    
+    keep_runing = True
+
+    while keep_runing:
+        answer = input("Do you want to analyze the subfolders too? (y) or (n): ")
+        answer = answer.lower()
+
+        if answer == "y" or answer == "n":
+            keep_runing = False
+
+    main(answer)
+
+
+
+if __name__ == "__main__":
+    menu()
