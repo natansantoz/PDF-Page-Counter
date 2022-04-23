@@ -4,6 +4,7 @@
  
 # ![Gif--Executavel](https://github.com/natansantoz/PDF-Page-Counter/blob/main/Images/exe.gif) 
 
+This is a script that count the number of pages of all PDFs in a directory.
 
 ## Requirements
 
