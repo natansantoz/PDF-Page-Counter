@@ -2,10 +2,8 @@
 
 This is a script that count the number of pages of all PDFs in a directory and in its subfolders, if choosed.
 
-# ![Gif--Script](https://github.com/natansantoz/PDF-Page-Counter/blob/main/Images/script.gif) 
+# ![Gif-Exe](https://github.com/natansantoz/PDF-Page-Counter/blob/main/Images/gf.gif) 
  
-# ![Gif--Executavel](https://github.com/natansantoz/PDF-Page-Counter/blob/main/Images/exe.gif) 
-
 
 ## Requirements
 
